@@ -59,17 +59,17 @@ Run the test on ES cluster 10.10.33.100, with 10 indices, 10 random documents wi
 
 Run the test with SSL
 ```bash
- python es-perf-test.py --es_ip https://10.10.33.101 --indices 5 --documents 5 --client_conn 1 --ca-file /path/ca.pem
+ python es-perf-test.py --es_ip https://10.10.33.101 --indices 5 --documents 5 --client_conn 1  --seconds 120 --ca-file /path/ca.pem
 ```
 
 Run the test with SSL without verify the certificate
 ```bash
- python es-perf-test.py --es_ip https://10.10.33.101 --indices 5 --documents 5 --client_conn 1 --no-verify
+ python es-perf-test.py --es_ip https://10.10.33.101 --indices 5 --documents 5 --client_conn 1 --seconds 120 --no-verify
 ```
 
 Run the test with HTTP Authentification
 ```bash
- python es-perf-test.py --es_ip 10.10.33.100 --indices 5 --documents 5 --client_conn 1 --user elastic --pass changeme
+ python es-perf-test.py --es_ip 10.10.33.100 --indices 5 --documents 5 --client_conn 1 --seconds 120 --user elastic --pass changeme
 ```
 
 ### Docker Installation
