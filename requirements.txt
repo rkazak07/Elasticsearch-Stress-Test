@@ -1,1 +1,1 @@
-elasticsearch2
+elasticsearch7

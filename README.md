@@ -49,7 +49,7 @@ The generation of documents is being processed before the run, so it will not ov
 ### Examples
 Run the test for 2 Elasticsearch clusters, with 4 indices on each, 5 random documents, don't wait for the cluster to be green, open 5 different writing threads and run the script for 120 seconds
 ```bash
-python es-perf-test.py  --es_address 1.2.3.4 1.2.3.5 --indices 4 --documents 5 --seconds 120 --not-green --clients 5
+python es-perf-test.py  --es_address 10.10.33.100 10.10.33.101 --indices 4 --documents 5 --seconds 120 --not-green --clients 5
 ```
 
 Run the test on ES cluster 1.2.3.4, with 10 indices, 10 random documents with up to 10 fields in each, the size of each field on each document can be up to 50 chars, each index will have 1 shard and no replicas, the test will run from 1 client (thread) for 300 seconds, will print statistics every 15 seconds, will index in bulks of 5000 documents and will leave everything in Elasticsearch after the test
@@ -59,17 +59,27 @@ Run the test on ES cluster 1.2.3.4, with 10 indices, 10 random documents with up
 
 Run the test with SSL
 ```bash
- python es-perf-test.py --es_address https://1.2.3.4 --indices 5 --documents 5 --clients 1 --ca-file /path/ca.pem
+ python es-perf-test.py --es_address https://10.10.33.101 --indices 5 --documents 5 --clients 1 --ca-file /path/ca.pem
 ```
 
 Run the test with SSL without verify the certificate
 ```bash
- python es-perf-test.py --es_address https://1.2.3.4 --indices 5 --documents 5 --clients 1 --no-verify
+ python es-perf-test.py --es_address https://10.10.33.101 --indices 5 --documents 5 --clients 1 --no-verify
 ```
 
 Run the test with HTTP Authentification
 ```bash
- python es-perf-test.py --es_address 1.2.3.4 --indices 5 --documents 5 --clients 1 --username elastic --password changeme
+ python es-perf-test.py --es_address 10.10.33.100 --indices 5 --documents 5 --clients 1 --username elastic --password changeme
+```
+
+### Docker Installation
+
+Edit Dockerfile 
+```bash
+ docker build -t rkazak1/es-stress-test:v1 .
+```
+```bash
+ docker run -d rkazak1/es-stress-test:v1 > log.txt
 ```
 ### Contribution
 You are more then welcome!
