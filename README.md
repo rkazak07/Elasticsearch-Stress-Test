@@ -1,12 +1,12 @@
 # Elasticsearch Stress Test
 
 ### Overview
-This script generates a bunch of documents, and indexes as much as it can to Elasticsearch. While doing so, it prints out metrics to the screen to let you follow how your cluster is doing.
+This script generates a bunch of documents, and indexes as much as it can to Elasticsearch. While doing so, it prints out metrics to the screen to let you follow how your cluster is doing. This work supports elasticsearch up to version 7.17.
 
 ### How to use
 * Save this script
 * Make sure you have Python 3.6+
-* pip install elasticsearch7   ( elasticsearch 7.17 version )
+* pip install elasticsearch7  
 
 
 ### How does it work
