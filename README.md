@@ -7,7 +7,7 @@ This script generates a bunch of documents, and indexes as much as it can to Ela
 * Save this script
 * Make sure you have Python 3.6+
 * pip install elasticsearch7   ( elasticsearch 7.17 version )
-* pip install elasticsearch   ( elasticsearch 8+ version )
+
 
 ### How does it work
 The script creates document templates based on your input. Say - 5 different documents.
