@@ -9,6 +9,8 @@ WORKDIR /app
 # Edit Elasticsearch Configuration
 
 ENV host=10.10.33.101
+ENV user=elastic
+ENV pass=elastic
 ENV indices=5
 ENV documents=2
 ENV clients=10
@@ -35,5 +37,7 @@ CMD python es-perf-test.py  --es_ip $host \
         --max-fields-per-document $max_fields_per_doc \
         --max-size-per-field $max_size_per_field \
         --stats-frequency $stats_frequency 
-
+        --user $user \
+        --pass $pass \
+        --no-verify
 
