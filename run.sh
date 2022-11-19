@@ -14,7 +14,7 @@ max_fields_per_doc=50
 max_size_per_field=500
 stats_frequency=30
 
-host=10.10.33.101
+host=https://10.10.33.101:9200
 username=elastic
 password=Passw0Rd!
 
