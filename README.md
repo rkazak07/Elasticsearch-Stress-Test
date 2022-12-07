@@ -49,7 +49,7 @@ The generation of documents is being processed before the run, so it will not ov
 
 
 ### Examples
-> Run the test for 2 Elasticsearch clusters, with 4 indices on each, 5 random documents, don't wait for the cluster to be green, open 5 different writing threads run the script for 120 seconds and contains 5 client connections
+> Run the test for 2 Elasticsearch clusters, with 4 indices on each, 5 random documents, don't wait for the cluster to be green, open 5 different writing threads run the script for 120 seconds
 ```bash
 python es-perf-test.py  --es_ip http://10.10.33.100:9200 http://10.10.33.101:9200 --indices 4 --documents 5 --seconds 120 --not-green --client_conn 5
 ```
