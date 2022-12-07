@@ -3,6 +3,9 @@
 ### Overview
 This script generates a bunch of documents, and indexes as much as it can to Elasticsearch. While doing so, it prints out metrics to the screen to let you follow how your cluster is doing. Also this project supports working elasticsearch up to version 7.17.
 
+### Note
+* If you constantly receive a failed error even though the Elasticsearch server has a low resource usage. Review the resource usage of the computer on which you perform the operation.
+
 ### How to use
 * Download this project
 * Change script
@@ -76,15 +79,57 @@ python es-perf-test.py  --es_ip http://10.10.33.100:9200 http://10.10.33.101:920
 
 ### Docker Installation
 
-> Edit Dockerfile 
+> Build Docker images
 ```bash
- docker build -t rkazak1/es-stress-test:v1 .
+ docker build -t rkazak1/es-perf-test:v1 .
 ```
-> The content output is in the log.txt file
+> While running the Docker image, revise the parameters according to your system.
 ```bash
- docker run -d rkazak1/es-stress-test:v1 > log.txt
+ docker run -t -i rkazak1/es-perf-test:v1 --es_ip <https://ip:port> \
+--indices <indices number> --documents <document number> \
+--client_conn <client number> --seconds <duration> \
+--shards <shards number> --bulk-size <bulk number> \
+--user <username> \
+--pass <password> \
+--no-verify \
+--not-green
 ```
-### Contribution
-You are more then welcome!
-Please open a PR or issues here.
 
+
+### Docker Example
+>  Run the test for 1 Elasticsearch clusters, with 5 indices on each, 5 random documents, open 10 different writing threads run the script for 90 seconds
+````
+[root@server elasticsearch-stress-test]# docker run -t -i rkazak1/es-perf-test:v1 --es_ip http://10.10.33.101:9200 \
+--indices 5 --documents 5 \
+--client_conn 10 --seconds 100 
+
+
+Starting initialization of http://10.10.33.101:9200
+Done!
+Creating indices..
+
+Generating documents and workers..
+Done!
+Starting the test. Will print stats every 30 seconds.
+The test would run for 100 seconds, but it might take a bit more because we are waiting for current bulk operation to complete.
+
+Elapsed time: 32 seconds
+Successful bulks: 46 (23000 documents)
+Failed bulks: 64 (32000 documents)
+Indexed approximately 490.70516300201416 MB which is 15.33 MB/s
+
+Elapsed time: 62 seconds
+Successful bulks: 88 (44000 documents)
+Failed bulks: 142 (71000 documents)
+Indexed approximately 942.7716693878174 MB which is 15.21 MB/s
+
+Test is done! Final results:
+Elapsed time: 92 seconds
+Successful bulks: 101 (50500 documents)
+Failed bulks: 363 (181500 documents)
+Indexed approximately 1079.806526184082 MB which is 11.74 MB/s
+
+
+Cleaning up created indices..
+Done!
+```
