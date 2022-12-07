@@ -1,7 +1,7 @@
 # Elasticsearch Stress Test
 
 ### Overview
-This script generates a bunch of documents, and indexes as much as it can to Elasticsearch. While doing so, it prints out metrics to the screen to let you follow how your cluster is doing. Also this project supports working elasticsearch up to version 7.17.
+This script generates a bunch of documents, and indexes as much as it can to Elasticsearch. While doing so, it prints out metrics to the screen to let you follow how your cluster is doing. Also this project supports working elasticsearch up to version 7.17.6
 
 ### Note
 * If you constantly receive a failed error even though the Elasticsearch server has a low resource usage. Review the resource usage of the computer on which you perform the operation.
