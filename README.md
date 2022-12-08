@@ -79,11 +79,11 @@ python es-perf-test.py  --es_ip http://10.10.33.100:9200 http://10.10.33.101:920
 
 ### Example Output
 
-> Run Elasticsearch stress test on rhel8
+> Run the test  Opensearch cluster on rhel8  , with 5 indices on each, 5 random documents, don't wait for the cluster to be green, with SSL without verify the certificate, open 2 different writing threads run the script for 60 seconds
 ```bash
  [root@Node elastic-perf]# sh es-perf.sh
 
-Starting initialization of http://10.10.33.100:9200
+Starting initialization of https://10.10.33.100:9200
 Done!
 Creating indices..
 Generating documents and workers..
@@ -129,11 +129,17 @@ Done!
 
 ### Docker Example
 
-> Run the test on ES cluster 10.10.33.100, with 5 indices, 5 random documents with up to 10 fields in each, the size of each field on each document can be up to 20 chars, each index will have 0 shard and no replicas, the test will run from 2 client (thread) for 100 seconds, will print statistics every 15 seconds, will index in bulks of 500 documents  will leave everything in Elasticsearch after the test 
+> Run the test on ES cluster 10.10.33.100, with 5 indices, 5 random documents with up to 20 fields in each, the size of each field on each document can be up to 5 chars, each index will have 1 shard and no replicas, the test will run from 2 client (thread) for 100 seconds, will print statistics every 15 seconds, will index in bulks of 500 documents  will leave everything in Elasticsearch after the test 
 
 ```bash
 
- [root@Node elastic-perf] docker run -t -i rkazak/es-perf-test:v1 --es_ip http://10.10.33.100:9200 --indices 5 --documents 5 --client_conn 2 --duration 100 --shards 1 --replicas 0 --bulk_number 500 --max-fields-per-document 5 --max-size-per-field 20 --no-cleanup --stats-frequency 15
+ [root@Node elastic-perf]# docker run -t -i rkazak/es-perf-test:v1 --es_ip http://10.10.33.100:9200 \ 
+ > --indices 5 --documents 5 \
+ > --client_conn 2 --duration 100 \
+ > --shards 1 --replicas 0 \
+ > --bulk_number 500 \
+ > --max-fields-per-document 5 --max-size-per-field 20 \
+ > --no-cleanup --stats-frequency 15
 
 Starting initialization of http://10.10.33.100:9200
 Done!
