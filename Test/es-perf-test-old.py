@@ -1,8 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin python3
 
 #
 # Stress test tool for elasticsearch
 # 
+# Created and Generated Ramazan KAZAK
+#  https://devsecopsteam.com
 
 import signal
 import sys
@@ -18,7 +20,7 @@ import threading
 import string
 from random import randint, choice
 
-# To get the time
+# To get the time and sleep parameters
 import time
 from time import sleep
 # For misc
@@ -28,7 +30,7 @@ import sys
 import json
 
 
-# Try and import elasticsearch
+# Try and import elasticsearch + ssl
 try:
     import ssl
     from elasticsearch7 import Elasticsearch

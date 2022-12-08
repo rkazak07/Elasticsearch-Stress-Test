@@ -20,10 +20,10 @@ password=Passw0Rd!
 
 python3 es-perf-test.py --es_ip $host \
         --indices $indices --documents $documents \
-        --client_conn $clients --seconds $seconds \
-        --number-of-shards $shards \
-        --number-of-replicas $replicas \
-        --bulk-size $bulk_size \
+        --client_conn $clients --duration $seconds \
+        --shards $shards \
+        --replicas $replicas \
+        --bulk_number $bulk_size \
         --max-fields-per-document $max_fields_per_doc \
         --max-size-per-field $max_size_per_field \
         --stats-frequency $stats_frequency \

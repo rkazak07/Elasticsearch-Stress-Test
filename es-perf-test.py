@@ -3,7 +3,7 @@
 #
 # Stress test tool for elasticsearch
 # 
-# Created and Generated Ramazan KAZAK
+# Prepared by Ramazan KAZAK
 #  https://devsecopsteam.com
 
 import signal
@@ -53,10 +53,10 @@ parser.add_argument("--es_ip", nargs='+', help="The address of your cluster (no 
 parser.add_argument("--indices", type=int, help="The number of indices to write to for each ip", required=True)
 parser.add_argument("--documents", type=int, help="The number different documents to write for each ip", required=True)
 parser.add_argument("--client_conn", type=int, help="The number of clients to write from for each ip", required=True)
-parser.add_argument("--seconds", type=int, help="The number of seconds to run for each ip", required=True)
-parser.add_argument("--number-of-shards", type=int, default=3, help="Number of shards per index (default 3)")
-parser.add_argument("--number-of-replicas", type=int, default=1, help="Number of replicas per index (default 1)")
-parser.add_argument("--bulk-size", type=int, default=1000, help="Number of document per request (default 1000)")
+parser.add_argument("--duration", type=int, help="The number of seconds to run for each ip", required=True)
+parser.add_argument("--shards", type=int, default=3, help="Number of shards per index (default 3)")
+parser.add_argument("--replicas", type=int, default=1, help="Number of replicas per index (default 1)")
+parser.add_argument("--bulk_number", type=int, default=500, help="Number of document per request (default 500)")
 parser.add_argument("--max-fields-per-document", type=int, default=100,
                     help="Max number of fields in each document (default 100)")
 parser.add_argument("--max-size-per-field", type=int, default=1000, help="Max content size per field (default 1000")
@@ -69,8 +69,8 @@ parser.set_defaults(green=True)
 parser.add_argument("--ca-file", dest="cafile", default="", help="Path to your certificate file")
 parser.add_argument("--no-verify", default=False, dest="no_verify", action="store_true", help="Do not verify certificate")
 
-parser.add_argument("--user", dest="auth_username", default="", help="HTTP authentication Username")
-parser.add_argument("--pass", dest="auth_password", default="", help="HTTP authentication Password")
+parser.add_argument("--user", dest="auth_username", default="", help="Basic authentication Username")
+parser.add_argument("--pass", dest="auth_password", default="", help="Basic authentication Password")
 
 # Parse the arguments
 args = parser.parse_args()
@@ -79,10 +79,10 @@ args = parser.parse_args()
 NUMBER_OF_INDICES = args.indices
 NUMBER_OF_DOCUMENTS = args.documents
 NUMBER_OF_CLIENTS = args.client_conn
-NUMBER_OF_SECONDS = args.seconds
-NUMBER_OF_SHARDS = args.number_of_shards
-NUMBER_OF_REPLICAS = args.number_of_replicas
-BULK_SIZE = args.bulk_size
+NUMBER_OF_SECONDS = args.duration
+NUMBER_OF_SHARDS = args.shards
+NUMBER_OF_REPLICAS = args.replicas
+BULK_SIZE = args.bulk_number
 MAX_FIELDS_PER_DOCUMENT = args.max_fields_per_document
 MAX_SIZE_PER_FIELD = args.max_size_per_field
 NO_CLEANUP = args.no_cleanup
@@ -458,7 +458,7 @@ try:
     main()
 
 except Exception as e:
-    print("Got unexpected exception. probably a bug, please report it.")
+    print("Got unexpected exception. probably a bug, please 'https://devsecops.com' address report it.")
     print("")
     print(e.message)
     print("")
