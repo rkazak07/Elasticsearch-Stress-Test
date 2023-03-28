@@ -106,6 +106,6 @@ def search(es, queries):
         total_time += res["took"]
     return total_hits, total_time
 	
-	start_time = time.monotonic()
+start_time = time.monotonic()
 while time.monotonic() - start_time < args.duration:
     # test kodları
